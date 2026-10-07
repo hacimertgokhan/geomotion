@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>geomotion player</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='14' cy='17' r='10' fill='%23e3dacc'/%3E%3Ccircle cx='17' cy='14' r='10' fill='none' stroke='%23141413' stroke-width='3'/%3E%3C/svg%3E" />
+  <style>
+    :root { color-scheme: light; }
+    html, body { margin: 0; height: 100%; }
+    body {
+      display: grid; place-items: center; background: #f0eee6;
+      font: 13px system-ui, -apple-system, "Segoe UI", sans-serif; color: #3d3d3a;
+    }
+    body.transparent { background: transparent; }
+    body.checker { background: repeating-conic-gradient(#e9e6dc 0 25%, #f6f4ee 0 50%) 0 0 / 24px 24px; }
+    geo-motion { width: min(100vw, 100vh); height: auto; }
+    .bar {
+      position: fixed; right: 12px; bottom: 12px; display: flex; gap: 6px;
+      opacity: 0; transition: opacity .2s;
+    }
+    body:hover .bar, .bar:focus-within { opacity: 1; }
+    .bar a {
+      background: #141413; color: #faf9f5; text-decoration: none; border-radius: 999px; padding: 6px 12px; font-weight: 550;
+    }
+    .msg { position: fixed; inset: auto 0 16px; text-align: center; }
+    body.embed .bar { display: none; }
+  </style>
+</head>
+<body>
+  <geo-motion id="player"></geo-motion>
+  <nav class="bar">
+    <a id="edit" href="../studio/">Edit in studio</a>
+    <a href="../">geomotion</a>
+  </nav>
+  <p id="msg" class="msg" hidden></p>
+  <script type="module">
+    import '../src/embed.js';
+    import { specFromHash } from '../src/core/links.js';
+    import { PRESETS } from '../src/presets/index.js';
+
+    const el = document.getElementById('player');
+    const params = new URLSearchParams(location.hash.slice(1));
+    if (params.get('embed') === '1' || window.self !== window.top) document.body.classList.add('embed');
+
+    async function load() {
+      try {
+        const { spec, transparent } = await specFromHash(location.hash, PRESETS);
+        if (!spec) {
+          Object.assign(document.getElementById('msg'), { hidden: false, textContent: 'No animation in this link. Showing the sunrise preset.' });
+        }
+        document.body.classList.toggle('transparent', transparent && document.body.classList.contains('embed'));
+        document.body.classList.toggle('checker', transparent && !document.body.classList.contains('embed'));
+        if (transparent) el.setAttribute('transparent', ''); else el.removeAttribute('transparent');
+        el.spec = spec ?? PRESETS.sunrise.spec;
+        document.title = `${el.spec.name ?? 'animation'} · geomotion`;
+        document.getElementById('edit').href = `../studio/${location.hash}`;
+      } catch (e) {
+        Object.assign(document.getElementById('msg'), { hidden: false, textContent: `Could not read this link: ${e.message}` });
+      }
+    }
+    addEventListener('hashchange', load);
+    load();
+  </script>
+</body>
+</html>

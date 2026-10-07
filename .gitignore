@@ -1,0 +1,7 @@
+node_modules/
+out/
+geomotion-out/
+.DS_Store
+*.log
+.claude/settings.local.json
+.claude/

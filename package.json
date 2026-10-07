@@ -1,0 +1,31 @@
+{
+  "name": "geomotion",
+  "version": "0.1.0",
+  "description": "Hand-drawn morphing line animations from simple shapes: a zero-dependency JS engine, live studio, CLI and MCP server. Exports animated SVG, Lottie, HTML and shareable links.",
+  "type": "module",
+  "main": "src/core/index.js",
+  "exports": {
+    ".": "./src/core/index.js",
+    "./presets": "./src/presets/index.js",
+    "./embed": "./src/embed.js"
+  },
+  "bin": {
+    "geomotion": "src/node/cli.js"
+  },
+  "scripts": {
+    "dev": "node src/node/studio-server.js",
+    "studio": "node src/node/studio-server.js",
+    "mcp": "node src/node/mcp.js",
+    "render": "node src/node/cli.js render",
+    "presets": "node src/node/cli.js presets --both",
+    "assets": "node scripts/build-assets.js",
+    "test": "node --test test/core.test.js"
+  },
+  "keywords": ["animation", "svg", "lottie", "hand-drawn", "sketch", "morph", "motion", "mcp", "claude"],
+  "homepage": "https://hacimertgokhan.github.io/geomotion",
+  "repository": { "type": "git", "url": "git+https://github.com/hacimertgokhan/geomotion.git" },
+  "bugs": "https://github.com/hacimertgokhan/geomotion/issues",
+  "author": "hacimertgokhan",
+  "engines": { "node": ">=18" },
+  "license": "MIT"
+}

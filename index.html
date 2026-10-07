@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>geomotion — hand-drawn motion from simple shapes</title>
+  <meta name="description" content="Open-source engine that turns simple shapes into hand-drawn, morphing line animations. Export animated SVG, Lottie, HTML or a shareable link. MCP server and Claude skill included." />
+  <meta property="og:title" content="geomotion — hand-drawn motion from simple shapes" />
+  <meta property="og:description" content="Describe a few poses. geomotion morphs them and inks every frame by hand." />
+  <meta name="theme-color" content="#f0eee6" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='14' cy='17' r='10' fill='%23e3dacc'/%3E%3Ccircle cx='17' cy='14' r='10' fill='none' stroke='%23141413' stroke-width='3'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="site/site.css" />
+</head>
+<body>
+  <header class="nav" id="top">
+    <a class="brand" href="#top" aria-label="geomotion home">
+      <svg class="logo" viewBox="0 0 40 40" aria-hidden="true"><circle cx="17" cy="22" r="13" fill="var(--oat)"/><circle cx="22" cy="17" r="13" fill="none" stroke="var(--ink)" stroke-width="3.2"/></svg>
+      <span>geomotion</span>
+    </a>
+    <nav class="links" aria-label="Sections">
+      <a href="#gallery">Gallery</a>
+      <a href="#how">How it works</a>
+      <a href="#use">Use it</a>
+      <a href="https://github.com/hacimertgokhan/geomotion">GitHub</a>
+    </nav>
+    <a class="btn" href="studio/">Open studio</a>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Open source · zero dependencies · MIT</p>
+        <h1>Hand-drawn motion,<br /><em>from simple shapes.</em></h1>
+        <p class="lede">
+          Describe a few poses as circles, lines and paths. geomotion morphs between them and
+          re-inks every frame by hand — wobbly strokes, boiling lines, riso-offset fills.
+          Export an animated SVG, a Lottie file, or just share a link.
+        </p>
+        <div class="ctas">
+          <a class="btn big" href="studio/">Open the studio →</a>
+          <a class="btn big ghost" href="#gallery">Browse 30+ animations</a>
+        </div>
+        <button class="install" data-copy="npx -y github:hacimertgokhan/geomotion render sunrise --both" aria-label="Copy install command">
+          <code><span class="dim">$</span> npx -y github:hacimertgokhan/geomotion render sunrise --both</code>
+          <span class="copy-hint">copy</span>
+        </button>
+      </div>
+      <div class="hero-art reveal">
+        <geo-motion id="hero-anim" transparent aria-label="Shapes morphing into each other"></geo-motion>
+        <p class="caption" id="hero-caption">one spec · five poses · zero keyframes drawn by hand</p>
+      </div>
+    </section>
+
+    <!-- STRIP -->
+    <section class="strip" aria-label="Animation samples">
+      <div class="strip-track" id="strip"></div>
+    </section>
+
+    <!-- HOW -->
+    <section class="how" id="how">
+      <header class="section-head reveal">
+        <p class="eyebrow">How it works</p>
+        <h2>Three steps. No timeline, no tweening by hand.</h2>
+      </header>
+      <ol class="steps">
+        <li class="step reveal">
+          <span class="num">1</span>
+          <h3>Describe poses</h3>
+          <p>Each keyframe is a list of shapes. Give the same <code>id</code> to things that should transform into each other.</p>
+<pre class="code"><code>{ "keyframes": [
+  { "shapes": [{ "id": "orb",
+      "type": "circle", "r": 240,
+      "cx": 600, "cy": 600,
+      "fill": "sun" }] },
+  { "shapes": [{ "id": "orb",
+      "type": "crescent", "r": 240,
+      "cx": 560, "cy": 620,
+      "fill": "heather" }] }
+] }</code></pre>
+        </li>
+        <li class="step reveal">
+          <span class="num">2</span>
+          <h3>geomotion draws it</h3>
+          <p>Shapes are matched, morphed and redrawn with a living, hand-inked line on every frame.</p>
+          <geo-motion class="step-anim" data-lazy-preset="night" transparent></geo-motion>
+        </li>
+        <li class="step reveal">
+          <span class="num">3</span>
+          <h3>Ship it anywhere</h3>
+          <p>One spec, every format — with or without a background.</p>
+          <ul class="chips">
+            <li>Animated SVG</li><li>Lottie JSON</li><li>HTML page</li><li>Transparent</li>
+            <li>Share link</li><li>&lt;iframe&gt;</li><li>&lt;geo-motion&gt;</li><li>PNG frame</li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery" id="gallery">
+      <header class="section-head reveal">
+        <p class="eyebrow">Gallery</p>
+        <h2>Start from a preset.</h2>
+        <p class="sub">Every animation below is a few lines of JSON. Open it in the studio, change it, export it.</p>
+      </header>
+      <div class="tabs" role="tablist" id="tabs"></div>
+      <div class="grid" id="grid"></div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features">
+      <header class="section-head reveal">
+        <p class="eyebrow">Why geomotion</p>
+        <h2>Made to look drawn, built to be used.</h2>
+      </header>
+      <div class="feature-grid">
+        <article class="feature reveal"><geo-motion data-lazy-preset="spinner" transparent></geo-motion><h3>Boiling ink</h3><p>Lines are redrawn with a fresh wobble every few frames, tapered at the ends — like traced cel animation.</p></article>
+        <article class="feature reveal"><geo-motion data-lazy-preset="kaleido" transparent></geo-motion><h3>Smart morphing</h3><p>Shapes are resampled and aligned automatically. Circles become stars, lines curl into loops, dots become hearts.</p></article>
+        <article class="feature reveal"><geo-motion data-lazy-preset="pebbles" transparent></geo-motion><h3>Riso fills</h3><p>Soft fills sit slightly off the ink, like a two-colour print. A warm paper palette is built in.</p></article>
+        <article class="feature reveal"><geo-motion data-lazy-preset="send" transparent></geo-motion><h3>Links, not uploads</h3><p>The whole animation is compressed into the URL. Share it, embed it in an iframe, edit it in the studio.</p></article>
+        <article class="feature reveal"><geo-motion data-lazy-preset="idea" transparent></geo-motion><h3>Claude-ready</h3><p>An MCP server and a skill let Claude design, render and share animations for you from a sentence.</p></article>
+        <article class="feature reveal"><geo-motion data-lazy-preset="gears" transparent></geo-motion><h3>Zero dependencies</h3><p>Plain ES modules that run in the browser and in Node. Deterministic: same spec, same drawing.</p></article>
+      </div>
+    </section>
+
+    <!-- USE IT -->
+    <section class="use" id="use">
+      <header class="section-head reveal">
+        <p class="eyebrow">Use it</p>
+        <h2>Wherever you work.</h2>
+      </header>
+      <div class="use-tabs" role="tablist" id="use-tabs">
+        <button role="tab" aria-selected="true" data-panel="p-web">Website</button>
+        <button role="tab" aria-selected="false" data-panel="p-claude">Claude (MCP + skill)</button>
+        <button role="tab" aria-selected="false" data-panel="p-cli">CLI</button>
+        <button role="tab" aria-selected="false" data-panel="p-js">JavaScript</button>
+      </div>
+      <div class="panels">
+        <div class="panel" id="p-web" role="tabpanel">
+          <p>Drop the web component on any page. It pauses itself when off-screen.</p>
+          <div class="codebox"><button class="copy" data-copy-from="c-web">Copy</button>
+<pre class="code" id="c-web"><code>&lt;script type="module" src="https://hacimertgokhan.github.io/geomotion/src/embed.js"&gt;&lt;/script&gt;
+
+&lt;geo-motion preset="success" transparent style="width:160px"&gt;&lt;/geo-motion&gt;
+&lt;geo-motion src="./my-animation.json"&gt;&lt;/geo-motion&gt;
+&lt;geo-motion preset="bell" hover&gt;&lt;/geo-motion&gt;   &lt;!-- plays on hover --&gt;</code></pre></div>
+          <p>Or link to a player — <a href="play/#preset=sunrise">play/#preset=sunrise</a>, <a href="play/#preset=success&amp;bg=0">play/#preset=success&amp;bg=0</a> (transparent).</p>
+        </div>
+        <div class="panel" id="p-claude" role="tabpanel" hidden>
+          <p>Install as a Claude Code plugin (MCP server + skill in one go):</p>
+          <div class="codebox"><button class="copy" data-copy-from="c-plugin">Copy</button>
+<pre class="code" id="c-plugin"><code>/plugin marketplace add hacimertgokhan/geomotion
+/plugin install geomotion@geomotion</code></pre></div>
+          <p>…or just the MCP server, in Claude Code or any MCP client:</p>
+          <div class="codebox"><button class="copy" data-copy-from="c-mcp">Copy</button>
+<pre class="code" id="c-mcp"><code>claude mcp add geomotion -- npx -y github:hacimertgokhan/geomotion mcp</code></pre></div>
+          <div class="codebox"><button class="copy" data-copy-from="c-desktop">Copy</button>
+<pre class="code" id="c-desktop"><code>{
+  "mcpServers": {
+    "geomotion": { "command": "npx", "args": ["-y", "github:hacimertgokhan/geomotion", "mcp"] }
+  }
+}</code></pre></div>
+          <p>Then ask: <em>“Make a transparent loading animation where a paper plane turns into a check mark.”</em> Claude writes the spec, renders SVG + Lottie and hands you a share link.</p>
+        </div>
+        <div class="panel" id="p-cli" role="tabpanel" hidden>
+          <div class="codebox"><button class="copy" data-copy-from="c-cli">Copy</button>
+<pre class="code" id="c-cli"><code>npx -y github:hacimertgokhan/geomotion list
+npx -y github:hacimertgokhan/geomotion render sunrise --both
+npx -y github:hacimertgokhan/geomotion render my-spec.json --formats svg,lottie,html --out public/anim
+npx -y github:hacimertgokhan/geomotion presets --category interface --transparent
+npx -y github:hacimertgokhan/geomotion link my-spec.json</code></pre></div>
+        </div>
+        <div class="panel" id="p-js" role="tabpanel" hidden>
+          <div class="codebox"><button class="copy" data-copy-from="c-js">Copy</button>
+<pre class="code" id="c-js"><code>import { render, makeLinks } from 'geomotion';
+
+const anim = render(spec, { transparent: true });
+anim.svg;      // animated SVG string
+anim.lottie;   // Lottie JSON object
+anim.frameSVG(1.5);   // still frame at 1.5s
+
+const { player, studio, embed } = await makeLinks(spec);</code></pre></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta reveal">
+      <geo-motion data-lazy-preset="sparkle" transparent></geo-motion>
+      <div>
+        <h2>Draw your first animation.</h2>
+        <p>Pick a preset, nudge a few numbers, share the link.</p>
+        <div class="ctas"><a class="btn big" href="studio/">Open the studio →</a><a class="btn big ghost" href="https://github.com/hacimertgokhan/geomotion">Star on GitHub</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>geomotion · MIT licensed · by <a href="https://github.com/hacimertgokhan">@hacimertgokhan</a></span>
+    <span>Every animation on this page is rendered live by geomotion.</span>
+  </footer>
+
+  <script type="module" src="site/site.js"></script>
+</body>
+</html>

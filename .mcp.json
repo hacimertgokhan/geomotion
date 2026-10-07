@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "geomotion": {
+      "command": "node",
+      "args": ["src/node/mcp.js"]
+    }
+  }
+}

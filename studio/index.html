@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>geomotion studio</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='14' cy='17' r='10' fill='%23e3dacc'/%3E%3Ccircle cx='17' cy='14' r='10' fill='none' stroke='%23141413' stroke-width='3'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="studio.css" />
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="../">
+      <svg class="logo" viewBox="0 0 40 40" aria-hidden="true"><circle cx="17" cy="22" r="13" fill="var(--oat)"/><circle cx="22" cy="17" r="13" fill="none" stroke="var(--ink)" stroke-width="3.2"/></svg>
+      <span class="word">geomotion</span>
+      <span class="tag">studio</span>
+    </a>
+    <nav class="exports">
+      <button id="btn-share" class="btn">Share link</button>
+      <button id="btn-svg" class="btn ghost">SVG</button>
+      <button id="btn-lottie" class="btn ghost">Lottie</button>
+      <button id="btn-png" class="btn ghost">PNG frame</button>
+    </nav>
+  </header>
+
+  <main class="layout">
+    <aside class="presets">
+      <input id="filter" class="filter" type="search" placeholder="Search 30+ presets…" aria-label="Search presets" />
+      <div id="preset-list"></div>
+    </aside>
+
+    <section class="stage-wrap">
+      <div class="stage">
+        <canvas id="stage" width="1200" height="1200" aria-label="Animation preview"></canvas>
+      </div>
+      <div class="transport">
+        <button id="play" class="round" aria-label="Pause">
+          <svg viewBox="0 0 24 24" class="i-pause"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+          <svg viewBox="0 0 24 24" class="i-play"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>
+        </button>
+        <input id="scrub" type="range" min="0" max="1000" value="0" aria-label="Timeline" />
+        <span id="time" class="time">0.00s</span>
+      </div>
+      <div class="knobs">
+        <label>Wobble <input id="k-wobble" type="range" min="0" max="2.5" step="0.05" value="1" /></label>
+        <label>Width <input id="k-width" type="range" min="4" max="60" step="1" value="24" /></label>
+        <label>Boil <input id="k-boil" type="range" min="0" max="24" step="1" value="12" /></label>
+        <label class="check"><input id="k-transparent" type="checkbox" /> Transparent</label>
+        <button id="k-seed" class="btn ghost small" title="New hand-drawn variation">↻ Redraw</button>
+      </div>
+      <p id="stats" class="stats"></p>
+    </section>
+
+    <section class="editor">
+      <div class="editor-head">
+        <h2>Spec</h2>
+        <div class="editor-actions">
+          <button id="btn-copy" class="btn ghost small">Copy</button>
+          <button id="btn-guide" class="btn ghost small">Reference</button>
+        </div>
+      </div>
+      <textarea id="spec" spellcheck="false"></textarea>
+      <p id="error" class="error" hidden></p>
+    </section>
+  </main>
+
+  <dialog id="share" class="share">
+    <form method="dialog"><h3>Share this animation</h3><button class="btn ghost small close">Close</button></form>
+    <div class="share-body">
+      <p class="hint">The whole animation is stored in the link — no account, no upload.</p>
+      <label>Player link <small>clean full-screen view</small>
+        <span class="row"><input id="ln-player" readonly /><button class="btn small" data-copy="ln-player">Copy</button></span></label>
+      <label>Studio link <small>opens this spec for editing</small>
+        <span class="row"><input id="ln-studio" readonly /><button class="btn small" data-copy="ln-studio">Copy</button></span></label>
+      <label>Embed (iframe)
+        <span class="row"><input id="ln-iframe" readonly /><button class="btn small" data-copy="ln-iframe">Copy</button></span></label>
+      <label>Embed (web component)
+        <span class="row"><input id="ln-tag" readonly /><button class="btn small" data-copy="ln-tag">Copy</button></span></label>
+    </div>
+  </dialog>
+
+  <dialog id="guide">
+    <form method="dialog"><button class="btn ghost small close">Close</button></form>
+    <pre id="guide-text"></pre>
+  </dialog>
+
+  <script type="module" src="studio.js"></script>
+</body>
+</html>

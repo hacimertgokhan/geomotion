@@ -1,0 +1,16 @@
+{
+  "name": "geomotion",
+  "version": "0.1.0",
+  "description": "Hand-drawn morphing line animations from simple shapes — MCP tools + skill. Exports animated SVG, Lottie, HTML and shareable links.",
+  "author": { "name": "hacimertgokhan", "url": "https://github.com/hacimertgokhan" },
+  "homepage": "https://hacimertgokhan.github.io/geomotion",
+  "repository": "https://github.com/hacimertgokhan/geomotion",
+  "license": "MIT",
+  "keywords": ["animation", "svg", "lottie", "hand-drawn", "motion", "mcp"],
+  "mcpServers": {
+    "geomotion": {
+      "command": "node",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/src/node/mcp.js"]
+    }
+  }
+}

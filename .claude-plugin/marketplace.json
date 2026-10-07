@@ -1,0 +1,12 @@
+{
+  "name": "geomotion",
+  "owner": { "name": "hacimertgokhan", "url": "https://github.com/hacimertgokhan" },
+  "plugins": [
+    {
+      "name": "geomotion",
+      "source": "./",
+      "description": "Hand-drawn morphing line animations — MCP server + skill.",
+      "category": "design"
+    }
+  ]
+}
