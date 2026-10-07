@@ -1,104 +1,108 @@
-<div align="center">
+<p align="center">
+  <a href="https://hacimertgokhan.github.io/geomotion">
+    <img src="assets/readme/banner.svg" alt="geomotion — hand-drawn motion from simple shapes" width="100%" />
+  </a>
+</p>
 
-<img src="assets/readme/sunrise.svg" width="180" alt="sunrise animation" /><img src="assets/readme/send.svg" width="180" alt="envelope folding into a paper plane" /><img src="assets/readme/success.svg" width="180" alt="success check" /><img src="assets/readme/idea.svg" width="180" alt="light bulb idea" />
+<p align="center">
+  <a href="https://hacimertgokhan.github.io/geomotion"><b>Website</b></a>
+  &nbsp;·&nbsp;
+  <a href="https://hacimertgokhan.github.io/geomotion/studio/"><b>Studio</b></a>
+  &nbsp;·&nbsp;
+  <a href="#use-it-with-claude">Claude / MCP</a>
+  &nbsp;·&nbsp;
+  <a href="#the-spec">Spec</a>
+  &nbsp;·&nbsp;
+  <a href="#presets">Presets</a>
+</p>
 
-# geomotion
+<p align="center">
+  <a href="https://github.com/hacimertgokhan/geomotion/stargazers"><img src="https://img.shields.io/github/stars/hacimertgokhan/geomotion?style=flat-square&color=141413&labelColor=3d3d3a&logo=github" alt="GitHub stars" /></a>
+  <img src="https://img.shields.io/badge/license-MIT-141413?style=flat-square&labelColor=3d3d3a" alt="MIT license" />
+  <img src="https://img.shields.io/badge/dependencies-0-d97757?style=flat-square&labelColor=3d3d3a" alt="zero dependencies" />
+  <img src="https://img.shields.io/badge/node-%E2%89%A5%2018-788c5d?style=flat-square&labelColor=3d3d3a" alt="node 18+" />
+</p>
 
-**Hand-drawn motion, from simple shapes.**
+<br />
 
-Describe a few poses as circles, lines and paths — geomotion morphs between them and re-inks
-every frame by hand: wobbly tapered strokes, boiling lines, riso-offset fills.<br/>
-Export **animated SVG**, **Lottie**, **HTML**, or just **share a link**.
+**geomotion** turns a few poses — circles, lines, SVG paths — into animation that looks drawn by hand.
+It morphs between the poses and re-inks every frame: tapered, wobbly strokes, lines that gently
+"boil", and soft fills printed slightly off the ink. Export an animated **SVG**, a **Lottie** file,
+an **HTML** page, or just **share a link**. No timeline, no dependencies.
 
-[**Website**](https://hacimertgokhan.github.io/geomotion) ·
-[**Studio**](https://hacimertgokhan.github.io/geomotion/studio/) ·
-[Gallery](https://hacimertgokhan.github.io/geomotion/#gallery) ·
-[Claude / MCP](#-claude-mcp-server--skill) ·
-[Spec reference](#-the-spec)
+<p align="center">
+  <img src="assets/readme/gallery.svg" alt="Eight geomotion presets animating" width="100%" />
+</p>
 
-![license](https://img.shields.io/badge/license-MIT-141413?style=flat-square)
-![deps](https://img.shields.io/badge/dependencies-0-d97757?style=flat-square)
-![node](https://img.shields.io/badge/node-%E2%89%A518-788c5d?style=flat-square)
-![formats](https://img.shields.io/badge/export-SVG%20·%20Lottie%20·%20HTML%20·%20link-6a9bcc?style=flat-square)
+## Highlights
 
-</div>
+|  |  |
+| --- | --- |
+| **Boiling ink** | Lines are redrawn with a fresh wobble a dozen times a second, with tapered ends — like traced cel animation. |
+| **Smart morphing** | Shapes are resampled and aligned automatically. Circles become stars, lines curl into loops, dots become hearts. |
+| **Riso fills** | Fills sit slightly off the ink, like a two-colour print. A warm paper palette is built in. |
+| **Every format** | Animated SVG (plays in `<img>`), Lottie JSON, standalone HTML, PNG frames — each with or without a background. |
+| **Links, not uploads** | The whole animation is compressed into the URL. Share it, embed it, open it in the studio to edit. |
+| **Claude-ready** | MCP server, skill and Claude Code plugin — ask for an animation in a sentence. |
+| **Zero dependencies** | Plain ES modules for browser and Node. Deterministic: the same spec always draws the same way. |
 
----
+## Quick start
 
-## ✦ Why
+**In the browser — nothing to install.**
+Open the [studio](https://hacimertgokhan.github.io/geomotion/studio/), pick one of 31 presets, edit the JSON,
+then press **Share link** or download **SVG / Lottie / PNG**.
 
-Most animation tools make you draw every frame or fiddle with a timeline. geomotion goes the other way:
-you write **poses**, it does the in-betweens — and it draws them like a person would, so the result has
-the warmth of traced cel animation instead of the stiffness of vector tweening.
-
-- **Boiling ink** — every few frames the line is redrawn with a fresh wobble and tapered ends.
-- **Smart morphing** — shapes are resampled and aligned automatically; circles become stars, lines curl into loops, dots become hearts.
-- **Riso fills** — soft fills sit slightly off the ink, like a two-colour print. Warm paper palette built in.
-- **Transparent or not** — every export comes with or without a background.
-- **Links, not uploads** — the whole animation is compressed into the URL. Share it, embed it, edit it.
-- **Claude-ready** — MCP server + skill, so Claude can design, render and share animations from a sentence.
-- **Zero dependencies** — plain ES modules for the browser and Node. Deterministic: same spec → same drawing.
-
-<div align="center">
-<img src="assets/readme/chat.svg" width="132" /><img src="assets/readme/night.svg" width="132" /><img src="assets/readme/sprout.svg" width="132" /><img src="assets/readme/gears.svg" width="132" /><img src="assets/readme/smile.svg" width="132" /><img src="assets/readme/kaleido.svg" width="132" />
-</div>
-
-## ✦ Quick start
-
-**No install — use the browser.** Open the [studio](https://hacimertgokhan.github.io/geomotion/studio/),
-pick one of 31 presets, edit the JSON, press **Share link** or download **SVG / Lottie / PNG**.
-
-**Command line** (Node 18+):
+**From the command line** (Node 18+):
 
 ```bash
-npx -y github:hacimertgokhan/geomotion list                      # presets by category
-npx -y github:hacimertgokhan/geomotion render sunrise --both      # svg + lottie, with & without background
-npx -y github:hacimertgokhan/geomotion render my-spec.json --formats svg,lottie,html,poster --out public/anim
-npx -y github:hacimertgokhan/geomotion presets --category interface --transparent
-npx -y github:hacimertgokhan/geomotion link my-spec.json         # player / studio / embed links
+npx -y github:hacimertgokhan/geomotion list                    # presets by category
+npx -y github:hacimertgokhan/geomotion render sunrise --both    # SVG + Lottie, with and without background
+npx -y github:hacimertgokhan/geomotion render spec.json --formats svg,lottie,html,poster --out public/anim
+npx -y github:hacimertgokhan/geomotion link spec.json           # player, studio and embed links
 ```
 
-**Locally:**
+**From source:**
 
 ```bash
-git clone https://github.com/hacimertgokhan/geomotion && cd geomotion
-npm run dev          # site + studio at http://localhost:5199
+git clone https://github.com/hacimertgokhan/geomotion
+cd geomotion
+npm run dev        # website + studio on http://localhost:5199
 npm test
 ```
 
-## ✦ Use it on a website
+## Use it on a website
 
 ```html
 <script type="module" src="https://hacimertgokhan.github.io/geomotion/src/embed.js"></script>
 
-<geo-motion preset="success" transparent style="width:160px"></geo-motion>
+<geo-motion preset="success" transparent style="width: 160px"></geo-motion>
 <geo-motion src="./my-animation.json"></geo-motion>
-<geo-motion code="z…"></geo-motion>                  <!-- the #s=… part of a share link -->
-<geo-motion preset="bell" hover></geo-motion>        <!-- plays only on hover -->
+<geo-motion code="z…"></geo-motion>             <!-- the #s=… part of a share link -->
+<geo-motion preset="bell" hover></geo-motion>   <!-- plays on hover -->
 ```
 
-Attributes: `preset` · `src` · `code` · `transparent` · `paused` · `hover` · `speed` · `start`.
-It renders to a canvas, compiles each spec once per page and pauses when off-screen.
+`<geo-motion>` renders to a canvas, compiles each spec once per page and pauses while off-screen.
+Attributes: `preset`, `src`, `code`, `transparent`, `paused`, `hover`, `speed`, `start`.
 
-Or link/iframe a player:
+Prefer a link or an iframe? Every animation has one:
 
-| Link | What it does |
+| URL | |
 | --- | --- |
-| `…/geomotion/play/#preset=sunrise` | full-screen player |
-| `…/geomotion/play/#preset=success&bg=0` | transparent background |
-| `…/geomotion/play/#s=<code>` | any custom animation (from **Share link**) |
-| `…/geomotion/studio/#s=<code>` | open it for editing |
+| `/geomotion/play/#preset=sunrise` | full-screen player |
+| `/geomotion/play/#preset=success&bg=0` | transparent background |
+| `/geomotion/play/#s=<code>` | any custom animation (from **Share link**) |
+| `/geomotion/studio/#s=<code>` | open it for editing |
 
-## ✦ Claude (MCP server + skill)
+## Use it with Claude
 
-**Claude Code plugin** — MCP tools and the skill in one go:
+Install the **Claude Code plugin** — MCP server and skill in one step:
 
 ```
 /plugin marketplace add hacimertgokhan/geomotion
 /plugin install geomotion@geomotion
 ```
 
-**Just the MCP server** (Claude Code, Claude Desktop, Cursor, any MCP client):
+Or add **only the MCP server** to Claude Code, Claude Desktop, Cursor or any MCP client:
 
 ```bash
 claude mcp add geomotion -- npx -y github:hacimertgokhan/geomotion mcp
@@ -112,36 +116,38 @@ claude mcp add geomotion -- npx -y github:hacimertgokhan/geomotion mcp
 }
 ```
 
-| Tool | Purpose |
+| Tool | What it does |
 | --- | --- |
-| `geomotion_guide` | spec reference, design tips and the preset catalog |
-| `geomotion_list_presets` | presets by category |
-| `geomotion_get_preset` | full JSON of a preset to start from |
-| `geomotion_render` | write SVG / Lottie / HTML / poster files (+ transparent variants) and return share links |
-| `geomotion_share_link` | encode a spec into player / studio / embed links, no files |
-| `geomotion_validate` | check a spec, get precise errors |
+| `geomotion_guide` | Spec reference, design rules and the preset catalog |
+| `geomotion_list_presets` | Presets grouped by category |
+| `geomotion_get_preset` | Full JSON of a preset, to start from |
+| `geomotion_render` | Writes SVG / Lottie / HTML / poster files (optionally transparent) and returns share links |
+| `geomotion_share_link` | Encodes a spec into player, studio and embed links — no files |
+| `geomotion_validate` | Checks a spec and explains what is wrong |
 
-Env: `GEOMOTION_OUT` (output folder), `GEOMOTION_SITE` (base URL for links).
+Environment: `GEOMOTION_OUT` (output folder), `GEOMOTION_SITE` (base URL for links).
 
-**Skill** — [`skills/geomotion/SKILL.md`](skills/geomotion/SKILL.md) teaches Claude the spec and the design rules.
-It also works without Node: `python skills/geomotion/scripts/link.py spec.json` turns a spec into a share link.
-Upload the `skills/geomotion` folder on claude.ai (Settings → Capabilities → Skills) to use it there.
+The **skill** lives in [`skills/geomotion`](skills/geomotion/SKILL.md). It also works without Node —
+`python skills/geomotion/scripts/link.py spec.json` turns a spec into a share link — so you can upload
+the folder to claude.ai under *Settings → Capabilities → Skills*.
 
-Then just ask: *“Make a transparent loader where a paper plane turns into a check mark.”*
+Then just ask: *"Make a transparent loader where a paper plane turns into a check mark."*
 
-## ✦ The spec
+## The spec
 
-An animation is a list of **keyframes** (poses); each pose is a list of **shapes**. Shapes with the same
-`id` morph into each other. Coordinates are in canvas units (default 1200 × 1200).
+An animation is a list of **keyframes** (poses). Each pose is a list of **shapes**.
+Shapes that share an `id` morph into each other; everything else enters or leaves.
+Coordinates are canvas units (1200 × 1200 by default).
 
 ```json
 {
   "name": "day-to-night",
-  "fps": 24, "boil": 12, "loop": true, "background": "ivory",
+  "background": "ivory",
   "hold": 1, "duration": 1, "ease": "inOutCubic",
-  "style": { "width": 24, "wobble": 1, "taper": 0.5, "misregister": [-14, 10] },
   "keyframes": [
-    { "shapes": [ { "id": "orb", "type": "circle", "cx": 600, "cy": 600, "r": 240, "fill": "sun" } ] },
+    { "shapes": [
+      { "id": "orb", "type": "circle", "cx": 600, "cy": 600, "r": 240, "fill": "sun" }
+    ] },
     { "shapes": [
       { "id": "orb", "type": "crescent", "cx": 560, "cy": 620, "r": 240, "thickness": 0.42, "angle": -40, "fill": "heather" },
       { "id": "star", "type": "star", "cx": 880, "cy": 320, "r": 52, "fill": "sun", "enter": "pop", "delay": 0.3 }
@@ -151,115 +157,123 @@ An animation is a list of **keyframes** (poses); each pose is a list of **shapes
 ```
 
 <details>
-<summary><b>Top-level fields</b></summary>
+<summary><b>Top-level options</b></summary>
+<br />
 
-| Field | Default | |
+| Option | Default | Description |
 | --- | --- | --- |
-| `size` | `[1200, 1200]` | canvas size |
-| `fps` | `24` | output frame rate |
-| `boil` | `12` | line re-draws per second (`0` = still) |
-| `loop` | `true` | last pose morphs back to the first |
-| `background` | `"ivory"` | colour or `"transparent"` |
-| `seed` | `1` | change for another hand-drawn variation |
-| `hold` / `duration` / `ease` | `0.7` / `0.9` / `inOutCubic` | keyframe defaults |
-| `style.width` | `24` | stroke width (scales with canvas) |
-| `style.wobble` | `1` | 0 = clean vector · 1 = hand-drawn · 2 = shaky |
-| `style.roughness` | `1` | width variation along the line |
-| `style.taper` | `0.5` | thinner line ends |
-| `style.misregister` | `[-14, 10]` | fill offset vs ink; `false` = off |
+| `size` | `[1200, 1200]` | Canvas size |
+| `fps` | `24` | Output frame rate |
+| `boil` | `12` | Line redraws per second (`0` = perfectly still) |
+| `loop` | `true` | The last pose morphs back into the first |
+| `background` | `"ivory"` | Colour, or `"transparent"` |
+| `seed` | `1` | Change for another hand-drawn variation |
+| `hold` · `duration` · `ease` | `0.7` · `0.9` · `inOutCubic` | Defaults for every keyframe |
+| `style.width` | `24` | Stroke width (scales with the canvas) |
+| `style.wobble` | `1` | `0` clean vector · `1` hand-drawn · `2` shaky |
+| `style.roughness` | `1` | Width variation along a line |
+| `style.taper` | `0.5` | How much line ends thin out |
+| `style.misregister` | `[-14, 10]` | Fill offset from the ink; `false` to disable |
 
 </details>
 
 <details>
 <summary><b>Shapes</b></summary>
+<br />
 
 | Type | Fields |
 | --- | --- |
 | `circle` | `cx, cy, r` |
 | `ellipse` | `cx, cy, rx, ry` |
-| `rect` | `x, y, w, h` or `cx, cy, w, h`, `radius?` |
+| `rect` | `x, y, w, h` or `cx, cy, w, h`, optional `radius` |
 | `line` | `from, to` or `points` |
-| `polyline` / `polygon` | `points`, `closed?` |
-| `regular` / `triangle` | `cx, cy, r, sides?, angle?` |
-| `star` | `cx, cy, r, inner?, points?, angle?` |
+| `polyline` · `polygon` | `points`, optional `closed` |
+| `regular` · `triangle` | `cx, cy, r`, optional `sides`, `angle` |
+| `star` | `cx, cy, r`, optional `inner`, `points`, `angle` |
 | `heart` | `cx, cy, size` |
-| `blob` | `cx, cy, r, seed?, irregularity?` |
-| `crescent` | `cx, cy, r, thickness?, angle?` |
-| `wave` | `from, to, amplitude?, waves?, phase?` |
-| `spiral` | `cx, cy, r, turns?` |
+| `blob` | `cx, cy, r`, optional `seed`, `irregularity` |
+| `crescent` | `cx, cy, r`, optional `thickness`, `angle` |
+| `wave` | `from, to`, optional `amplitude`, `waves`, `phase` |
+| `spiral` | `cx, cy, r`, optional `turns` |
 | `arc` | `cx, cy, r, start, end` (degrees) |
-| `path` | `d` — any SVG path; each subpath is its own line |
+| `path` | `d` — any SVG path; each subpath becomes its own line |
 
-**Options on every shape:** `id`, `fill`, `stroke` (colour or `false`), `width`, `opacity`,
-`enter` / `exit` (`grow` · `pop` · `draw` · `fade` · `cut`), `delay` (0–0.95, for staggering),
-`ease`, `transform { translate, rotate, scale, origin }`, `misregister`.
+Every shape also accepts `id`, `fill`, `stroke` (colour or `false`), `width`, `opacity`,
+`enter` / `exit` (`grow`, `pop`, `draw`, `fade`, `cut`), `delay` (0–0.95, for staggering), `ease`,
+`transform` (`translate`, `rotate`, `scale`, `origin`) and `misregister`.
 
 </details>
 
 <details>
-<summary><b>Palette & easings</b></summary>
+<summary><b>Palette and easings</b></summary>
+<br />
 
-`ink` `slate` `ivory` `paper` `oat` `kraft` `clay` `coral` `fig` `sky` `cactus` `olive` `heather` `sun` `white` — or any hex.
+**Palette:** `ink` `slate` `ivory` `paper` `oat` `kraft` `clay` `coral` `fig` `sky` `cactus` `olive` `heather` `sun` `white` — or any hex colour.
 
-`linear` `inQuad` `outQuad` `inOutQuad` `inCubic` `outCubic` `inOutCubic` `inOutQuart` `inSine` `outSine` `inOutSine`
-`outExpo` `inOutExpo` `outBack` `inOutBack` `outElastic` `outBounce`
+**Easings:** `linear` `inQuad` `outQuad` `inOutQuad` `inCubic` `outCubic` `inOutCubic` `inOutQuart` `inSine` `outSine` `inOutSine` `outExpo` `inOutExpo` `outBack` `inOutBack` `outElastic` `outBounce`
 
 </details>
 
-**Design tips:** 2–5 bold shapes per pose with ~120 px margin · ink outlines + one or two accent fills ·
-tell a story through ids · stagger with `delay` · `draw` for written lines, `pop` for playful arrivals ·
-split rotations larger than ~30° into several keyframes.
+**What makes it look good:** two to five bold shapes per pose with generous margins · ink outlines plus
+one or two accent fills · let ids tell a story (envelope → paper plane) · stagger with `delay` ·
+`draw` for lines that should feel written, `pop` for playful arrivals · split rotations larger than
+~30° into several keyframes.
 
-## ✦ Presets — 31 in 7 categories
+## Presets
+
+31 ready-made animations in seven categories — open any of them with `play/#preset=<name>` or `studio/#preset=<name>`.
 
 | Category | Presets |
 | --- | --- |
-| Interface | `loader` `spinner` `success` `error` `toggle` `bell` `search` |
-| Nature | `sunrise` `sprout` `rain` `night` `sea` |
-| Communication | `chat` `send` `like` `connect` |
-| Ideas & Business | `idea` `growth` `target` `gears` `house` |
-| Characters | `smile` `ghost` `sparkle` |
-| Abstract | `drift` `orbit` `kaleido` `pebbles` |
-| Motion | `bounce` `pendulum` `jelly` |
+| Interface | `loader` · `spinner` · `success` · `error` · `toggle` · `bell` · `search` |
+| Nature | `sunrise` · `sprout` · `rain` · `night` · `sea` |
+| Communication | `chat` · `send` · `like` · `connect` |
+| Ideas & Business | `idea` · `growth` · `target` · `gears` · `house` |
+| Characters | `smile` · `ghost` · `sparkle` |
+| Abstract | `drift` · `orbit` · `kaleido` · `pebbles` |
+| Motion | `bounce` · `pendulum` · `jelly` |
 
-## ✦ JavaScript API
+## JavaScript API
 
 ```js
-import { render, compile, toAnimatedSVG, toLottie, makeLinks } from 'geomotion';
+import { render, makeLinks } from 'geomotion';
 import { PRESETS, CATEGORIES } from 'geomotion/presets';
 
 const anim = render(spec, { transparent: true });
-anim.svg;            // animated SVG string (SMIL — works in <img>, browsers, GitHub READMEs)
-anim.lottie;         // Lottie JSON (lottie-web, LottieFiles, iOS/Android)
-anim.frameSVG(1.5);  // still frame at 1.5 s
+anim.svg;              // animated SVG string
+anim.lottie;           // Lottie JSON (lottie-web, LottieFiles, iOS, Android)
+anim.frameSVG(1.5);    // a still frame at 1.5 s
 
 const { player, studio, embed } = await makeLinks(spec);
 ```
 
-## ✦ How it works
+## How it works
 
-1. **Shapes → centerlines.** Every shape (or SVG path) becomes a polyline, resampled to 128 points.
-2. **Matching.** Partners are found by `id`; closed loops are rotated/flipped to the alignment with the least travel, open lines can unroll into loops and back.
-3. **Timeline.** Holds and morphs are laid out; each frame interpolates the centerlines with the chosen easing, per-shape delays and enter/exit modes.
-4. **Ink.** Each centerline is offset into a filled outline with smooth noise (wobble), varying width and rounded, tapered caps. The noise seed changes `boil` times per second.
-5. **Export.** Identical consecutive frames are merged, contours become compact Catmull-Rom Bézier paths, written out as SMIL-animated SVG or as one Lottie layer per drawing.
+1. **Centerlines** — every shape or SVG path becomes a polyline, resampled to 128 points.
+2. **Matching** — partners are found by `id`; loops are rotated or flipped to the alignment with the least travel, and open lines can unroll into loops and back.
+3. **Timeline** — holds and morphs are laid out; each frame interpolates the centerlines with the keyframe easing, per-shape delays and enter/exit modes.
+4. **Ink** — each centerline is offset into a filled outline with smooth noise, varying width and rounded, tapered caps. The noise seed changes `boil` times per second.
+5. **Export** — identical frames are merged, outlines become compact Bézier paths, and the result is written as SMIL-animated SVG or one Lottie layer per drawing.
 
-## ✦ Project layout
+## Repository layout
 
 ```
-src/core/       engine (shapes, morphing, ink, SVG + Lottie renderers, links) — browser & Node
-src/presets/    31 categorized presets
-src/embed.js    <geo-motion> web component
-src/node/       CLI, MCP server, local dev server
-studio/         live editor        play/   link player        index.html + site/   website
-skills/         Claude skill        .claude-plugin/   Claude Code plugin + marketplace
+src/core/         engine — shapes, morphing, ink, SVG & Lottie renderers, links
+src/presets/      31 presets in 7 categories
+src/embed.js      <geo-motion> web component
+src/node/         CLI, MCP server, local dev server
+studio/           live editor
+play/             link player
+index.html, site/ website
+skills/           Claude skill
+.claude-plugin/   Claude Code plugin and marketplace
 ```
 
-## ✦ Contributing
+## Contributing
 
-Issues and PRs are welcome — new presets especially. A preset is just a spec in `src/presets/<category>.js`;
-run `npm test` and `npm run assets` before opening a PR.
+Issues and pull requests are welcome — new presets especially. A preset is just a spec in
+`src/presets/<category>.js`. Run `npm test` and `npm run assets` before opening a PR.
 
 ## License
 
-[MIT](LICENSE) © hacimertgokhan
+[MIT](LICENSE) © [hacimertgokhan](https://github.com/hacimertgokhan)

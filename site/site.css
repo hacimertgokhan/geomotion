@@ -66,6 +66,42 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; letter-spacing: -0.015
 .links a { text-decoration: none; color: var(--slate); font-weight: 500; font-size: 15px; }
 .links a:hover { color: var(--ink); }
 
+.nav-actions { display: flex; align-items: center; gap: 10px; }
+.i { display: inline-flex; width: 16px; height: 16px; flex: none; }
+.i svg { width: 100%; height: 100%; }
+.gh-btn {
+  display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 4px 0 12px;
+  border: 1.5px solid var(--ink); border-radius: 999px; text-decoration: none; font: 600 14px var(--sans);
+  background: var(--ivory); transition: transform .18s ease, background .18s ease;
+}
+.gh-btn:hover { transform: translateY(-2px); background: var(--oat); }
+.gh-btn .count {
+  display: none; align-items: center; gap: 4px; height: 26px; padding: 0 9px; border-radius: 999px;
+  background: var(--ink); color: var(--ivory); font: 600 12.5px var(--sans);
+}
+.gh-btn .count .i { width: 12px; height: 12px; color: var(--sun); }
+.gh-btn.has-stats .count { display: inline-flex; }
+.gh-btn:not(.has-stats) { padding-right: 12px; }
+.count-inline { display: none; align-items: center; gap: 3px; margin-left: 4px; opacity: .8; }
+.count-inline .i { width: 13px; height: 13px; }
+.has-stats .count-inline { display: inline-flex; }
+
+.pill {
+  display: inline-flex; align-items: center; gap: 7px; margin-bottom: 18px; padding: 6px 14px 6px 10px;
+  border-radius: 999px; background: var(--ivory); border: 1px solid var(--line);
+  text-decoration: none; color: var(--slate); font: 500 13.5px var(--sans); transition: border-color .2s;
+}
+.pill:hover { border-color: var(--ink); }
+.pill .i { width: 15px; height: 15px; color: var(--clay); }
+.pill b { color: var(--ink); }
+.pill .stars-part { display: none; align-items: center; gap: 6px; }
+.pill.has-stats .stars-part { display: inline-flex; }
+.pill .sep { width: 3px; height: 3px; border-radius: 50%; background: var(--muted); opacity: .6; }
+
+.foot-links { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 18px; }
+.foot-links a { display: inline-flex; align-items: center; gap: 6px; text-decoration: none; }
+.foot-links a:hover { color: var(--ink); }
+
 /* ───────── hero ───────── */
 .hero {
   display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); align-items: center;

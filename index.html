@@ -21,16 +21,24 @@
       <a href="#gallery">Gallery</a>
       <a href="#how">How it works</a>
       <a href="#use">Use it</a>
-      <a href="https://github.com/hacimertgokhan/geomotion">GitHub</a>
     </nav>
-    <a class="btn" href="studio/">Open studio</a>
+    <div class="nav-actions">
+      <a class="gh-btn" data-gh-wrap href="https://github.com/hacimertgokhan/geomotion" aria-label="Star geomotion on GitHub">
+        <span class="i" data-icon="github"></span><span class="lbl">Star</span>
+        <span class="count"><span class="i" data-icon="star"></span><span data-gh="stars">–</span></span>
+      </a>
+      <a class="btn" href="studio/">Open studio</a>
+    </div>
   </header>
 
   <main>
     <!-- HERO -->
     <section class="hero">
       <div class="hero-copy reveal">
-        <p class="eyebrow">Open source · zero dependencies · MIT</p>
+        <a class="pill" data-gh-wrap data-gh-hide-zero href="https://github.com/hacimertgokhan/geomotion">
+          <span class="stars-part"><span class="i" data-icon="star"></span><b data-gh="stars"></b> stars<span class="sep"></span></span>
+          Open source<span class="sep"></span>MIT<span class="sep"></span>0 dependencies
+        </a>
         <h1>Hand-drawn motion,<br /><em>from simple shapes.</em></h1>
         <p class="lede">
           Describe a few poses as circles, lines and paths. geomotion morphs between them and
@@ -191,13 +199,18 @@ const { player, studio, embed } = await makeLinks(spec);</code></pre></div>
       <div>
         <h2>Draw your first animation.</h2>
         <p>Pick a preset, nudge a few numbers, share the link.</p>
-        <div class="ctas"><a class="btn big" href="studio/">Open the studio →</a><a class="btn big ghost" href="https://github.com/hacimertgokhan/geomotion">Star on GitHub</a></div>
+        <div class="ctas"><a class="btn big" href="studio/">Open the studio →</a><a class="btn big ghost" data-gh-wrap data-gh-hide-zero href="https://github.com/hacimertgokhan/geomotion"><span class="i" data-icon="github"></span>Star on GitHub <span class="count-inline"><span class="i" data-icon="star"></span><span data-gh="stars"></span></span></a></div>
       </div>
     </section>
   </main>
 
   <footer class="foot">
-    <span>geomotion · MIT licensed · by <a href="https://github.com/hacimertgokhan">@hacimertgokhan</a></span>
+    <span class="foot-links">
+      <a href="https://github.com/hacimertgokhan/geomotion"><span class="i" data-icon="github"></span>Source</a>
+      <a href="https://github.com/hacimertgokhan/geomotion/issues">Issues</a>
+      <a href="studio/">Studio</a>
+      <span>MIT · by <a href="https://github.com/hacimertgokhan">@hacimertgokhan</a></span>
+    </span>
     <span>Every animation on this page is rendered live by geomotion.</span>
   </footer>
 

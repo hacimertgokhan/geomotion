@@ -3,6 +3,9 @@ import {
   encodeSpec, specFromHash, formatSpec,
 } from '../src/core/index.js';
 import { PRESETS, CATEGORIES } from '../src/presets/index.js';
+import { hydrateGitHub } from '../site/github.js';
+
+hydrateGitHub();
 
 const $ = (id) => document.getElementById(id);
 const canvas = $('stage');

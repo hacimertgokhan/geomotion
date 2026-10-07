@@ -61,6 +61,17 @@ button { font: inherit; color: inherit; cursor: pointer; }
 h2 { font: 600 13px/1 var(--sans); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 0 0 12px; }
 
 .brand { color: inherit; text-decoration: none; }
+.i { display: inline-flex; width: 16px; height: 16px; flex: none; }
+.i svg { width: 100%; height: 100%; }
+.gh-btn {
+  display: inline-flex; align-items: center; gap: 7px; height: 34px; padding: 0 10px;
+  border: 1.5px solid var(--ink); border-radius: 999px; text-decoration: none; color: var(--ink);
+  font: 600 13px var(--sans); transition: background .15s;
+}
+.gh-btn:hover { background: var(--oat); }
+.gh-btn .count { display: none; align-items: center; gap: 3px; }
+.gh-btn .count .i { width: 12px; height: 12px; color: var(--clay); }
+.gh-btn.has-stats .count { display: inline-flex; }
 .presets { padding: 16px 12px; border-right: 1px solid var(--line); overflow: auto; }
 .filter {
   width: 100%; border: 1.5px solid var(--line); background: var(--ivory); border-radius: 999px;
